@@ -1,0 +1,44 @@
+# deployment settings
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Values.name }}"
+spec:
+  replicas: 2 # number of pods
+  selector:
+    matchLabels:
+      app: "{{ .Values.name }}"
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1 # 1 over replicas limit
+      maxUnavailable: 0 # number of not working pods
+  # pod settings
+  template:
+    metadata:
+      labels:
+        app: "{{ .Values.name }}"
+    spec:
+      containers:
+        - name: "{{ .Values.name }}"
+          image: {{ .Values.deployment.image }}:{{ .Values.deployment.tag }}
+          imagePullPolicy: Always # always pull image
+          # open container ports
+          ports:
+            - containerPort: 2368
+              name: http
+            - containerPort: 22
+              name: ssh
+          livenessProbe:
+            httpGet:
+              path: /ghost # check this site
+              port: 2368
+            initialDelaySeconds: 3 # wait 3s before firt probe
+            periodSeconds: 3 # perfrom probe every 3s
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "50m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"

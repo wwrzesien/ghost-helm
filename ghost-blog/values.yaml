@@ -1,0 +1,4 @@
+name: ghost2
+deployment:
+  image: ghost
+  tag: 4.1.2

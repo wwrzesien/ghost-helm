@@ -1,0 +1,20 @@
+# service settings
+apiVersion: v1
+kind: Service
+metadata:
+  name: "{{ .Values.name }}"
+spec:
+  # specify which pods to route traffic to
+  selector:
+    app: "{{ .Values.name }}"
+  ports:
+    # ports managed by ClusterIP
+    - protocol: TCP
+      targetPort: 2368
+      port: 2368
+      name: http
+    - protocol: TCP
+      targetPort: 22
+      port: 22
+      name: ssh
+  type: ClusterIP
