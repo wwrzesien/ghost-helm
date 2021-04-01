@@ -29,16 +29,16 @@ spec:
               name: http
             - containerPort: 22
               name: ssh
-          livenessProbe:
-            httpGet:
-              path: /ghost # check this site
-              port: 2368
-            initialDelaySeconds: 3 # wait 3s before firt probe
-            periodSeconds: 3 # perfrom probe every 3s
-          resources:
-            requests:
-              memory: "64Mi"
-              cpu: "50m"
-            limits:
-              memory: "256Mi"
-              cpu: "500m"
+          # livenessProbe:
+          #   httpGet:
+          #     path: /ghost # check this site
+          #     port: 2368
+          #   initialDelaySeconds: 3 # wait 3s before firt probe
+          #   periodSeconds: 3 # perfrom probe every 3s
+          # resources:
+          #   requests:
+          #     memory: "64Mi"
+          #     cpu: "50m"
+          #   limits:
+          #     memory: "256Mi"
+          #     cpu: "500m"

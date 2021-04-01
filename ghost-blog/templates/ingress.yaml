@@ -1,13 +1,13 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  # annotations:
-  #   nginx.ingress.kubernetes.io/proxy-body-size: "0"
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
   name: "{{ .Values.name }}"
 spec:
   rules:
-    - host: ghost-app.192.168.99.100.nip.io
-    - http:
+    - host: ghost2.192.168.99.100.nip.io
+      http:
         paths:
           - path: /
             pathType: ImplementationSpecific
