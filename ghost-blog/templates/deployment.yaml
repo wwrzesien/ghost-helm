@@ -34,7 +34,7 @@ spec:
               mountPath: {{ .Values.deployment.mountPath }}
           env:
           - name: url
-            value: https://ghost.info
+            value: https://{{ .Values.url }}
       volumes:
         - name: "{{ .Values.name }}"
           persistentVolumeClaim:

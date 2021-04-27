@@ -6,7 +6,7 @@ metadata:
   name: "{{ .Values.name }}"
 spec:
   rules:
-    - host: ghost.info
+    - host: {{ .Values.url }}
       http:
         paths:
           - path: /
