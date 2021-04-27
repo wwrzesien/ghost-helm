@@ -5,3 +5,4 @@ deployment:
   mountPath: /var/lib/ghost/content
 persistentVolume:
   hostPath: # path to content folder
+url: ghost.info
