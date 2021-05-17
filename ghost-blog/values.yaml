@@ -1,8 +1,8 @@
 name: ghost
 deployment:
   image: ghost
-  tag: 4.1.2
+  tag: 4.4.0
   mountPath: /var/lib/ghost/content
 persistentVolume:
-  hostPath: # path to content folder
+  hostPath: /content # path to content folder
 url: ghost.info
